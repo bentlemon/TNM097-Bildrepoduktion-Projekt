@@ -1,1 +1,3 @@
-function resized = 
+function resizedImages = resizeImage(chosenImages)
+
+end
