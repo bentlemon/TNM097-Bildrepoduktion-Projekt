@@ -11,14 +11,11 @@ function images = loadImagesFromFolder(folderPath)
         % Construct the full file path
         filePath = fullfile(folderPath, imageFiles(i).name);
 
-        % Try to read the image
-        try
-            images{i} = imread(filePath);
-        catch
-            fprintf('Error loading image: %s\n', filePath);
-        end
+        % Read the image and convert to double
+        img = imread(filePath);
+        img_double = im2double(img);
+
+        % Store the double image in the cell array
+        images{i} = img_double;
     end
-    
-    % Display a message indicating that all images were loaded
-    fprintf('All images loaded successfully!\n');
 end
