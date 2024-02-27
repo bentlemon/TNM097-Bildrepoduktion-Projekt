@@ -6,14 +6,12 @@
 
 % Ref image for the recontructed one
 
-
 % Load in the images
 folderPath = "C:\Users\mahon\Desktop\Cappy_spel\TNM097-Bildrepoduktion-Projekt\Images\CAT_00";
 loadedImages = loadImagesFromFolder(folderPath); % Function
 
 imageRef = im2double(imread("ref_image_cat.jpg")); % Image is 3010x3010x3
 % Next task: Find the best color comparsion method! CIELAB? 
-
 
 % TEST IMAGES %
 image1 = imread("Images\CAT_00\00000078_009.jpg");
@@ -25,34 +23,11 @@ images = {image1, image2, image3};
 % Set the target size for the square image
 targetSize = 256;  % Adjust as needed
 
-% Call the function
-croppedResizedImgs = resizeCropIm(images, targetSize);
-
-% % Display the cropped and resized images outside the function
-% for i = 1:numel(croppedResizedImgs)
-%     figure;
-%     subplot(1, 2, 1);
-%     imshow(images{i});
-%     title('Original Image');
-% 
-%     subplot(1, 2, 2);
-%     imshow(croppedResizedImgs{i});
-%     title('Cropped and Resized Image');
-% end
-
-% ----------------------------------------% 
-
-% Set the target size for the square image
-targetSize = 256;  % Adjust as needed
-
 % Call the function to crop and resize the images
 croppedResizedImgs = resizeCropIm(images, targetSize);
 
 % Create a reference image (white in this example)
 referenceImage = 255 * ones(3010, 3010, 3, 'uint8');  % White image
-
-% Set the spacing between smaller images
-spacing = 0;  % Adjust as needed
 
 % Set the size of each smaller image in the grid
 smallerImageSize = 60;  % 10x10 pixels
@@ -62,7 +37,7 @@ numRows = ceil(sqrt(numel(croppedResizedImgs)));
 numCols = ceil(numel(croppedResizedImgs) / numRows);
 
 % Calculate the size of the grid cells
-cellSize = smallerImageSize + spacing;
+cellSize = smallerImageSize;
 
 % Place the smaller images in the grid
 for i = 1:numel(croppedResizedImgs)
