@@ -30,7 +30,7 @@ croppedResizedImgs = resizeCropIm(images, targetSize);
 referenceImage = 255 * ones(3010, 3010, 3, 'uint8');  % White image
 
 % Set the size of each smaller image in the grid
-smallerImageSize = 60;  % 10x10 pixels
+smallerImageSize = 60; 
 
 % Arrange the smaller images in a grid inside the reference image
 numRows = ceil(sqrt(numel(croppedResizedImgs)));
