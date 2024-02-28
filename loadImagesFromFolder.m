@@ -1,4 +1,5 @@
 function images = loadImagesFromFolder(folderPath)
+    % OK!!!
     % Get a list of all image files in the folder
     imageFiles = dir(fullfile(folderPath, '*.jpg'));
     
@@ -15,7 +16,7 @@ function images = loadImagesFromFolder(folderPath)
         img = imread(filePath);
         img_double = im2double(img);
 
-        % Store the double image in the cell array
+        % Store the image in the cell array
         images{i} = img_double;
     end
 end
