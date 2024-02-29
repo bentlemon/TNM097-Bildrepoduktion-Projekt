@@ -18,7 +18,7 @@ loadedImages = loadImagesFromFolder(folderPath); % Function
 imageRef = im2double(imread("ref_image_cat.jpg")); % Image is 3010x3010x3
 
 % Set the target size for the square image (?x? big)
-targetSize = 100;  
+targetSize = 20;  
 
 % Call the function to crop and resize the images
 croppedResizedImgs = resizeCropIm(loadedImages, targetSize);
