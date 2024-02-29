@@ -18,14 +18,15 @@ loadedImages = loadImagesFromFolder(folderPath); % Function
 imageRef = im2double(imread("ref_image_cat.jpg")); % Image is 3010x3010x3
 
 % Set the target size for the square image (?x? big)
-targetSize = 500;  
+targetSize = 151;  
 
 % Call the function to crop and resize the images
 croppedResizedImgs = resizeCropIm(loadedImages, targetSize);
 
 optImg = optimizeDatabase(croppedResizedImgs); % preforming k-mean
 
-choppedRefImg = cutRefImg(imageRef, targetSize);
+resizedImage = imresize(imageRef, [3024, 3024]);
+choppedRefImg = splitAndPadImage(resizedImage, targetSize);
 %visualizeChoppedImages(choppedRefImg); % for visualization of the ref im
 
 
