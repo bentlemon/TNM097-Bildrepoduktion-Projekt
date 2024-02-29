@@ -1,0 +1,20 @@
+function matchedImgs = matchingImgtoRef(choppedRefImg, optImg)
+    
+    % ta in labvärden för båda delarna
+    % skapa en tom matris med samma storlek som choppedRefImg
+    % Loopa igenom choppedRefImg 
+    % Loop för att matcha det minsta delta E:et mellan optImg och ref
+    % if sats --> om E_new (mean) < E_old --> bäst match för ref{i}
+    % Lägg in optImg i den tomma matrisen
+    % returnera :D
+
+    numImages = numel(choppedRefImg);
+    matchedImgs = cell(1, numImages);
+
+    for i = 1:numImages
+        
+
+    end
+
+
+end
