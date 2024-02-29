@@ -25,7 +25,7 @@ function result = splitAndPadImage(inputImage, targetSize)
             % Skapa en cell och kopiera data från orginalbilden
             result{i, j} = padarray(inputImage(rowStart:rowEnd, colStart:colEnd, :), ...
                                      [actualSizeVertical - (rowEnd - rowStart + 1), ...
-                                      actualSizeHorizontal - (colEnd - colStart + 1)], 0, 'post');
+                                      actualSizeHorizontal - (colEnd - colStart + 1)], 'replicate', 'post');
         end
     end
 end

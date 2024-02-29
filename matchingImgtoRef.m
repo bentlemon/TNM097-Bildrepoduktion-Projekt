@@ -1,36 +1,28 @@
-function matchedImgs = matchingImgtoRef(choppedRefImg, optImg)
-    
-    % ta in labvärden för båda delarna
-    % skapa en tom matris med samma storlek som choppedRefImg
-    % Loopa igenom choppedRefImg 
-    % Loop för att matcha det minsta delta E:et mellan optImg och ref
-    % if sats --> om E_new (mean) < E_old --> bäst match för ref{i}
-    % Lägg in optImg i den tomma matrisen
-    % returnera :D
+function choosenImg = matchingImgtoRef(choppedRefImg, optImg)
+    % Skapa en tom cellmatris med samma storlek som choppedRefImg
+    choosenImg = cell(size(choppedRefImg));
 
-    numRefImg = numel(choppedRefImg);
-    numOptImg = numel(optImg);
-    matchedImgs = cell(1, numImages);
-    deltaE = 0.0;
-    minDeltaE = inf; 
+    for i = 1:size(choppedRefImg, 1)
+        for j = 1:size(choppedRefImg, 2)
+            % Fyll varje cell med en tom matris
+            choosenImg{i, j} = zeros(size(choppedRefImg{i, j}));
+            
+            refImg_lab = rgb2lab(choppedRefImg{i, j}); % få labvärden för ref-bilden
+            minDeltaE = inf; % startvärde
 
-    for i = 1:numRefImg
-        for j = 1:numRefImg
-            refImg_lab = rgb2lab(choppedRefImg{i, j}); % get the lab for ref
-            for k = 1:numOptImg
+            for k = 1:numel(optImg)
                 optImg_lab = rgb2lab(optImg{k});
-                
-                % calc delta E -- MÅSTE VARa SAMMA STORLEK
+
+                % beräkna delta E -- MÅSTE VARA SAMMA STORLEK (fixat)
                 deltaE = calcDeltaE(refImg_lab, optImg_lab);
-                
-                if deltaE 
-    
+                deltaEMean = mean(deltaE(:));
+
+                if deltaEMean < minDeltaE
+                    minDeltaE = deltaEMean;
+                    % Lägg in optImg i den tomma matrisen
+                    choosenImg{i, j} = optImg{k};
                 end
-                
-    
             end
         end
     end
-
-
 end
