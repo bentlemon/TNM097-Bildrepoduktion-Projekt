@@ -1,7 +1,6 @@
 function optimizedImages = optimizeDatabase(images)
-    % Function preforms k-means with 50 clusters to get 
-    % the best diversed lab images
-    numClusters = 50; % Database size 
+
+    numClusters = 50; % Adjust as needed
     numImages = numel(images);
     labImages = cell(1, numImages);
 
@@ -20,7 +19,8 @@ function optimizedImages = optimizeDatabase(images)
     lab_data = cell2mat(lab_flat);
 
     % Perform k-means clustering
-    [~, clusterCenters] = kmeans(lab_data, numClusters);
+   
+    [idx, clusterCenters] = kmeans(lab_data, numClusters);
 
     % Find closest objects to the cluster centers
     closestImages = cell(numClusters, 1);
@@ -33,6 +33,20 @@ function optimizedImages = optimizeDatabase(images)
         % Assign the closest object to the cluster
         closestImages{j} = images{minIdx};
     end
-     % output images
-     optimizedImages = closestImages;
+
+    % meanDeltaE = mean(labImages, 2); % 2: mean two times!
+    % 
+    % % Combine clustering and DeltaE information for ranking
+    % clusterWeight = 0.7; % Adjust the weight based on importance
+    % meanCluster = mean(idx, 2);
+    % 
+    % % Combine DeltaE and clustering information
+    % combinedScore = clusterWeight * meanCluster + (1 - clusterWeight) * meanDeltaE;
+    % 
+    % % Sorting and choosing the top 50 images
+    % [~, indices] = sort(combinedScore, 'descend');
+    % selectedIndices = indices(1:50);
+    % 
+    % % Fetch the selected images from the original images
+     optimizedImages = clos;
 end
