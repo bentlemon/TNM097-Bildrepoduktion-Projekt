@@ -11,7 +11,7 @@
 % MAKE A SCIELAB & SNR COMPARESENSE WITH ORG REF AND RECONSTRUCTEDS
 
 % Load in the images
-folderPath = "C:\Users\mahon\Desktop\Cappy_spel\TNM097-Bildrepoduktion-Projekt\Images\CAT_00";
+folderPath = '../TNM097-Bildrepoduktion-Projekt/Images/CAT_00';
 loadedImages = loadImagesFromFolder(folderPath); % Function
 
 % Ref images
@@ -35,7 +35,7 @@ reconImg = matchingImgtoRef(choppedRefImg, optImg);
 resultImg = combineImage(reconImg);
 
 % SCIELAB AND SNR results
-
+calcsCIELAB(resultImg);
 
 % Show result!
-imshow(resultImg);
+%imshow(resultImg);

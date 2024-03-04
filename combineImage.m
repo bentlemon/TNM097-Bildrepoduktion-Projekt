@@ -1,14 +1,17 @@
 function resultingImage = combineImage(reconImg)
 
-    % Loopa igenom och kombinera de matchade bilderna
+    % Initialize resultingImage outside the loop
+    resultingImage = [];
+
+    % Loop through and combine the matched images
     for i = 1:size(reconImg, 1)
         rowImages = [];
         for j = 1:size(reconImg, 2)
-            % Kombinera bilderna horisontellt i varje rad
+            % Combine the images horizontally in each row
             rowImages = cat(2, rowImages, reconImg{i, j});
         end
-        % Kombinera raderna vertikalt för att bilda en enda bild
-        resultingImage = cat(1, combinedImage, rowImages);
+        % Combine the rows vertically to form a single image
+        resultingImage = cat(1, resultingImage, rowImages);
     end
 
 end
