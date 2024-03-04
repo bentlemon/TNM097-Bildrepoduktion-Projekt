@@ -15,10 +15,12 @@ folderPath = "C:\Users\mahon\Desktop\Cappy_spel\TNM097-Bildrepoduktion-Projekt\I
 loadedImages = loadImagesFromFolder(folderPath); % Function
 
 % Ref images
-imageRef = im2double(imread("ref_image_cat.jpg")); % Image is 3010x3010x3
+%imageRef = im2double(imread("ref_image_cat.jpg")); % Image is 3010x3010x3
+%imageRef = im2double(imread("ref_maxwell.jpg")); % Landskap
+imageRef = im2double(imread("ref_maxwell_backrooms.jpg")); % dark image
 
 % Set the target size for the square image (?x? big)
-targetSize = 100;  
+targetSize = 20;  
 
 % Call the function to crop and resize the images
 croppedResizedImgs = resizeCropIm(loadedImages, targetSize);
@@ -45,4 +47,8 @@ for i = 1:size(reconImg, 1)
 end
 
 % Visa den sammanhängande bilden
+
+calcsCIELAB(combinedImage);
+calcSNR(resizedImage , combinedImage);
+
 imshow(combinedImage);

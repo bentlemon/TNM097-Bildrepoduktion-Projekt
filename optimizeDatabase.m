@@ -1,7 +1,7 @@
 function optimizedImages = optimizeDatabase(images)
     % Function preforms k-means with 50 clusters to get 
     % the best diversed lab images
-    numClusters = 50; % Database size 
+    numClusters = 100; % Database size 
     numImages = numel(images);
     labImages = cell(1, numImages);
 
