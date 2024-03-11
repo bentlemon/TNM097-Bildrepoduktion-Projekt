@@ -16,8 +16,8 @@ loadedImages = loadImagesFromFolder(folderPath); % Function
 
 % Ref images
 %imageRef = im2double(imread("ref_image_cat.jpg")); % Image is 3010x3010x3
-%imageRef = im2double(imread("ref_maxwell.jpg")); % Landskap
-imageRef = im2double(imread("ref_maxwell_backrooms.jpg")); % dark image
+imageRef = im2double(imread("ref_maxwell.jpg")); % Landskap
+%imageRef = im2double(imread("ref_maxwell_backrooms.jpg")); % dark image
 
 % Set the target size for the square image (?x? big)
 targetSize = 20;  
@@ -27,7 +27,7 @@ croppedResizedImgs = resizeCropIm(loadedImages, targetSize);
 
 optImg = optimizeDatabase(croppedResizedImgs); % preforming k-mean
 
-resizedImage = imresize(imageRef, [3024, 3024]);
+resizedImage = imresize(imageRef, [3000, 3000]);
 choppedRefImg = splitAndPadImage(resizedImage, targetSize);
 
 reconImg = matchingImgtoRef(choppedRefImg, optImg);
@@ -46,9 +46,8 @@ for i = 1:size(reconImg, 1)
     combinedImage = cat(1, combinedImage, rowImages);
 end
 
+calcsCIELAB(combinedImage, resizedImage);
+calcSNR(resizedImage , abs(resizedImage - combinedImage));
+
 % Visa den sammanhängande bilden
-
-calcsCIELAB(combinedImage);
-calcSNR(resizedImage , combinedImage);
-
 imshow(combinedImage);

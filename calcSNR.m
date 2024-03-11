@@ -10,7 +10,6 @@ function calcedSNR = calcSNR(refImg, reconImgNoise)
 
     calcedSNR = 10*log10(sum(refImg(:).^2)/sum(reconImgNoise(:).^2));
 
-
     % Display the results
     disp(['SNR value:' , num2str(calcedSNR)]);
 end
